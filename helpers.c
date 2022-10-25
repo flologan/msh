@@ -6,15 +6,13 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "msh.h"
 #include "helpers.h"
 
-int get_input(char input_str[])
+int get_input(char input_str[], int max_length)
 {
     int i = 0;
 
-    printf(">: ");
-    if (fgets(input_str, BUFFER_SIZE, stdin) != 0) {
+    if (fgets(input_str, max_length, stdin) != 0) {
         return -1;
     }
     if (input_str[strlen(input_str) - 1] != '\n') {
