@@ -1,3 +1,8 @@
-# build files
+# ignore files with no extension
+*
+!*.*
+!*/
+
+# ignore build files
 *.o
 *./msh
