@@ -8,11 +8,11 @@
 
 #include "helpers.h"
 
-int get_input(char input_str[], int max_length)
+int get_input(char input_str[], int max_size)
 {
     int i = 0;
 
-    if (fgets(input_str, max_length, stdin) != 0) {
+    if (fgets(input_str, max_size, stdin) != 0) {
         return -1;
     }
     if (input_str[strlen(input_str) - 1] != '\n') {
