@@ -7,6 +7,7 @@
 
 int msh_loop(void)
 {
+    const int buffer_size = 256;
     char buffer[buffer_size] = "";
     int argc = 0;
     char **argv = NULL;
