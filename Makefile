@@ -1,7 +1,7 @@
-cc 		= gcc
-cflags 	= -Wall
-objs 	= main.o msh.o helpers.o
-bin 	= msh
+cc = gcc
+cflags = -Wall
+objs = main.o msh.o helpers.o
+bin = msh
 
 all: $(bin)
 
