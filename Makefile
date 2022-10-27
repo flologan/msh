@@ -1,18 +1,15 @@
-cc = gcc
-cflags = -Wall
-tgts = msh main.o msh.o helpers.o
+cc 		= gcc
+cflags 	= -Wall
+objs 	= main.o msh.o helpers.o
+bin 	= msh
 
-msh: main.o msh.o helpers.o
-	$(cc) $(cflags) main.o msh.o helpers.o -o msh
+all: $(bin)
 
-main.o: main.c msh.h helpers.h
-	$(cc) -c main.c
+msh: $(objs)
+	$(cc) $(cflags) $(objs) -o $(bin)
 
-msh.o: msh.c msh.h helpers.h
-	$(cc) -c msh.c
-
-helpers.o: helpers.c msh.h helpers.h
-	$(cc) -c helpers.c
+%.o: %.c
+	$(cc) $(cflags) -c $< -o $@
 
 clean:
-	rm $(tgts)
+	rm $(bin) $(objs)
