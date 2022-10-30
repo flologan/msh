@@ -7,30 +7,29 @@
 
 int msh_loop(void)
 {
-    const int buffer_size = 256;
-    char buffer[buffer_size] = "";
+    char buffer[BUFFER_SIZE] = "";
     int argc = 0;
     char **argv = NULL;
 
     while (1) {
         printf(">: ");
-        get_input(buffer, buffer_size);
+        get_input(buffer, BUFFER_SIZE);
         argc = tokenize(buffer, &argv);
         if (argc == 0) {
             continue;
         }
 
-        /* start built-in shell functions */
+        /* start of built-in shell functions */
         if (strcmp("cd", argv[0]) == 0) {
             if (chdir(argv[1]) != 0) {
                 printf("msh: %s: %s: No such file or directory\n", argv[0], argv[1]);
             }
             else {
-                printf("%s\n", getcwd(buffer, buffer_size ));
+                printf("%s\n", getcwd(buffer, BUFFER_SIZE ));
             }
             continue;
         }
-        /* end built-in shell functions */
+        /* end of built-in shell functions */
 
         /* main execution condition */
         else if (strcmp("exit", argv[0]) != 0) {
@@ -40,6 +39,7 @@ int msh_loop(void)
             free_vec(argc, argv);
             continue;
         }
+        /* end of main execution condition */
 
         /* default case */
         else {

@@ -1,15 +1,18 @@
-cc = gcc
-cflags = -Wall
-objs = main.o msh.o helpers.o
-bin = msh
+# to build, type `make`
+# to clean, type `make clean`
+
+cc 		= gcc
+cflags 	= -Wall
+objs 	= main.o msh.o helpers.o
+bin 	= msh
 
 all: $(bin)
 
-msh: $(objs)
-	$(cc) $(cflags) $(objs) -o $(bin)
+$(bin): $(objs)
+	$(cc) $(cflags) $(objs) -o $@
 
 %.o: %.c
 	$(cc) $(cflags) -c $< -o $@
 
 clean:
-	rm $(bin) $(objs)
+	rm -f $(bin) $(objs)

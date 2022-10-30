@@ -15,7 +15,7 @@ int get_input(char input_str[], int max_size)
     if (fgets(input_str, max_size, stdin) != 0) {
         return -1;
     }
-    if (input_str[strlen(input_str) - 1] != '\n') {
+    if (input_str[strlen(input_str) - 1] != '\n') {         // if input_str is greater than BUFFER_SIZE, there will be no '\n' character within the buffer
         i = 0;
         while (i != EOF && i != '\n') {
             i = getchar();
@@ -46,7 +46,7 @@ int tokenize(char *s, char ***argv)
             }
         }
     }
-    if (!rows) {
+    if (!rows) {                                                        // if user enters the empty string
         return rows;
     }
 
@@ -104,11 +104,14 @@ int free_vec(int argc, char **argv)
     if (argv == NULL) {
         return -1;
     }
-    for (i = 0; i < argc; i++) {
+    for (i = 0; i < argc; i++) {                // free each element of the string array
+        if (argv[i] == NULL) {
+            continue;
+        }
         free(argv[i]);
         argv[i] = NULL;
     }
-    free(argv);
+    free(argv);                                 // free the main string array pointer
     argv = NULL;
     return 0;
 }
